@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma WHILE: 15 Ejercicios Categorizados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* HEADER PRINCIPAL */
+        .main-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 50px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .main-header h1 {
+            font-size: 3.2em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .main-header .subtitle {
+            font-size: 1.4em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .main-header .description {
+            font-size: 1.1em;
+            opacity: 0.8;
+        }
+
+        /* NAVEGACIÓN DE CATEGORÍAS */
+        .categories-nav {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .nav-title {
+            text-align: center;
+            font-size: 1.8em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .category-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .category-card.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .category-icon {
+            font-size: 2em;
+            margin-right: 15px;
+        }
+
+        .category-title {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .category-description {
+            font-size: 0.95em;
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .category-count {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .category-card.active .category-count {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* SELECTOR DE EJERCICIOS */
+        .exercises-selector {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: none;
+        }
+
+        .exercises-selector.visible {
+            display: block;
+        }
+
+        .selector-title {
+            font-size: 1.6em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .exercise-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #e9ecef;
+        }
+
+        .exercise-card:hover {
+            border-color: #667eea;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .exercise-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .exercise-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .exercise-description {
+            font-size: 0.9em;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+
+        /* ÁREA DE EJERCICIO ACTIVO */
+        .exercise-workspace {
+            display: none;
+        }
+
+        .exercise-workspace.active {
+            display: block;
+        }
+
+        .workspace-header {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .current-exercise {
+            font-size: 1.8em;
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .exercise-breadcrumb {
+            font-size: 1.1em;
+            color: #6c757d;
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #6c757d, #495057);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        /* PASOS DE METODOLOGÍA (reutilizado del anterior) */
+        .step-container {
+            margin-bottom: 40px;
+        }
+
+        .step-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .step-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 4px solid #667eea;
+            position: relative;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.6em;
+            margin-right: 25px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .step-title {
+            font-size: 2em;
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .problem-section {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            border-left: 8px solid #4caf50;
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.2);
+        }
+
+        .sketch-board {
+            background: linear-gradient(135deg, #fff8e1, #ffecb3);
+            border-radius: 20px;
+            padding: 35px;
+            margin: 30px 0;
+            border-left: 8px solid #ff9800;
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.2);
+        }
+
+        .analysis-panel {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+            border-radius: 20px;
+            padding: 35px;
+            margin: 30px 0;
+            border-left: 8px solid #9c27b0;
+            box-shadow: 0 8px 20px rgba(156, 39, 176, 0.2);
+        }
+
+        .code-workspace {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            padding: 35px;
+            margin: 30px 0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .language-tabs {
+            display: flex;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 8px;
+            margin-bottom: 30px;
+        }
+
+        .language-tab {
+            flex: 1;
+            padding: 18px 30px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            color: #6c757d;
+        }
+
+        .language-tab.active {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .code-editor-wrapper {
+            background: #1e1e1e;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            margin: 25px 0;
+        }
+
+        .editor-header {
+            background: #2d2d2d;
+            padding: 18px 30px;
+            color: white;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-textarea {
+            width: 100%;
+            background: #1e1e1e;
+            border: none;
+            color: #d4d4d4;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 15px;
+            line-height: 1.7;
+            padding: 30px;
+            resize: none;
+            outline: none;
+            min-height: 450px;
+        }
+
+        .execution-zone {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 8px solid #28a745;
+        }
+
+        .run-button {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
+        }
+
+        .run-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(40, 167, 69, 0.4);
+        }
+
+        .output-terminal {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 30px;
+            border-radius: 15px;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 15px;
+            line-height: 1.6;
+            min-height: 250px;
+            max-height: 450px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            border: 3px solid #2d2d2d;
+        }
+
+        .navigation-controls {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 18px 35px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-button.secondary {
+            background: linear-gradient(135deg, #6c757d, #495057);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .main-header h1 {
+                font-size: 2.5em;
+            }
+            
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .exercises-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-card {
+                padding: 25px;
+            }
+            
+            .language-tab {
+                padding: 15px 20px;
+                font-size: 1em;
+            }
+            
+            .navigation-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER PRINCIPAL -->
+        <header class="main-header">
+            <h1>🎯 Maestría en Ciclos WHILE</h1>
+            <div class="subtitle">15 Ejercicios Categorizados con Metodología Completa</div>
+            <div class="description">Del Bosquejo al Código: Domina la programación paso a paso</div>
+        </header>
+
+        <!-- NAVEGACIÓN DE CATEGORÍAS -->
+        <div class="categories-nav" id="categories-section">
+            <h2 class="nav-title">📚 Selecciona una Categoría de Ejercicios</h2>
+            
+            <div class="categories-grid">
+                <div class="category-card" onclick="showCategory(1)">
+                    <div class="category-header">
+                        <div class="category-icon">🔢</div>
+                        <div class="category-title">Secuencias Básicas</div>
+                    </div>
+                    <div class="category-description">
+                        Ejercicios fundamentales de conteo y secuencias numéricas
+                    </div>
+                    <div class="category-count">3 Ejercicios</div>
+                </div>
+
+                <div class="category-card" onclick="showCategory(2)">
+                    <div class="category-header">
+                        <div class="category-icon">✖️</div>
+                        <div class="category-title">Múltiplos y Tablas</div>
+                    </div>
+                    <div class="category-description">
+                        Múltiplos, tablas de sumar y multiplicar con rangos personalizados
+                    </div>
+                    <div class="category-count">3 Ejercicios</div>
+                </div>
+
+                <div class="category-card" onclick="showCategory(3)">
+                    <div class="category-header">
+                        <div class="category-icon">📊</div>
+                        <div class="category-title">Rangos y Filtros</div>
+                    </div>
+                    <div class="category-description">
+                        Trabajar con rangos numéricos y aplicar filtros específicos
+                    </div>
+                    <div class="category-count">3 Ejercicios</div>
+                </div>
+
+                <div class="category-card" onclick="showCategory(4)">
+                    <div class="category-header">
+                        <div class="category-icon">🔍</div>
+                        <div class="category-title">Análisis Numérico</div>
+                    </div>
+                    <div class="category-description">
+                        Divisores, números perfectos, primos y análisis matemático
+                    </div>
+                    <div class="category-count">4 Ejercicios</div>
+                </div>
+
+                <div class="category-card" onclick="showCategory(5)">
+                    <div class="category-header">
+                        <div class="category-icon">⚙️</div>
+                        <div class="category-title">Operaciones por Simulación</div>
+                    </div>
+                    <div class="category-description">
+                        Multiplicación por sumas y división por restas sucesivas
+                    </div>
+                    <div class="category-count">2 Ejercicios</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SELECTOR DE EJERCICIOS (se mostrará según categoría) -->
+        <div class="exercises-selector" id="exercises-selector">
+            <h3 class="selector-title" id="selector-title">Ejercicios de la Categoría</h3>
+            <div class="exercises-grid" id="exercises-grid">
+                <!-- Se llena dinámicamente -->
+            </div>
+            <div style="text-align: center; margin-top: 25px;">
+                <button class="back-button" onclick="backToCategories()">
+                    ⬅️ Volver a Categorías
+                </button>
+            </div>
+        </div>
+
+        <!-- ÁREA DE TRABAJO DEL EJERCICIO -->
+        <div class="exercise-workspace" id="exercise-workspace">
+            <div class="workspace-header">
+                <div class="current-exercise" id="current-exercise-title">Ejercicio Actual</div>
+                <div class="exercise-breadcrumb" id="exercise-breadcrumb">Categoría > Ejercicio</div>
+                <button class="back-button" onclick="backToExercises()">
+                    ⬅️ Volver a Ejercicios
+                </button>
+            </div>
+
+            <!-- PASO 1: PLANTEAMIENTO -->
+            <div class="step-container">
+                <div class="step-card visible" id="step-1">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Planteamiento del Problema</div>
+                    </div>
+
+                    <div class="problem-section" id="problem-content">
+                        <!-- Contenido dinámico del problema -->
+                    </div>
+
+                    <div class="navigation-controls">
+                        <button class="nav-button" onclick="showStep(2)">
+                            Continuar al Bosquejo 📝
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 2: BOSQUEJO -->
+            <div class="step-container">
+                <div class="step-card hidden" id="step-2">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Bosquejo: Simulando el Problema</div>
+                    </div>
+
+                    <div class="sketch-board" id="sketch-content">
+                        <!-- Contenido dinámico del bosquejo -->
+                    </div>
+
+                    <div class="navigation-controls">
+                        <button class="nav-button secondary" onclick="showStep(1)">⬅️ Anterior</button>
+                        <button class="nav-button" onclick="showStep(3)">Analizar Patrón 🧠</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 3: ANÁLISIS -->
+            <div class="step-container">
+                <div class="step-card hidden" id="step-3">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Análisis: Detectando el Patrón</div>
+                    </div>
+
+                    <div class="analysis-panel" id="analysis-content">
+                        <!-- Contenido dinámico del análisis -->
+                    </div>
+
+                    <div class="navigation-controls">
+                        <button class="nav-button secondary" onclick="showStep(2)">⬅️ Anterior</button>
+                        <button class="nav-button" onclick="showStep(4)">Ver Código 💻</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PASO 4: CÓDIGO -->
+            <div class="step-container">
+                <div class="step-card hidden" id="step-4">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Implementación: Del Análisis al Código</div>
+                    </div>
+
+                    <div class="code-workspace">
+                        <div class="language-tabs">
+                            <button class="language-tab active" onclick="switchLanguage('pseint')">
+                                📝 PSeInt
+                            </button>
+                            <button class="language-tab" onclick="switchLanguage('javascript')">
+                                💻 JavaScript
+                            </button>
+                        </div>
+
+                        <div class="code-editor-wrapper" id="editor-pseint">
+                            <div class="editor-header">
+                                <span>📝 PSeInt - Función con MIENTRAS</span>
+                                <span style="background: rgba(102,126,234,0.3); padding: 6px 15px; border-radius: 20px; font-size: 0.9em;">MIENTRAS/FINMIENTRAS</span>
+                            </div>
+                            <textarea class="code-textarea" id="code-pseint">
+// El código PSeInt se cargará dinámicamente según el ejercicio
+                            </textarea>
+                        </div>
+
+                        <div class="code-editor-wrapper hidden" id="editor-javascript">
+                            <div class="editor-header">
+                                <span>💻 JavaScript - Función con WHILE</span>
+                                <span style="background: rgba(102,126,234,0.3); padding: 6px 15px; border-radius: 20px; font-size: 0.9em;">while/console.log</span>
+                            </div>
+                            <textarea class="code-textarea" id="code-javascript">
+// El código JavaScript se cargará dinámicamente según el ejercicio
+                            </textarea>
+                        </div>
+
+                        <div class="execution-zone">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+                                <div style="color: #155724; font-weight: bold; font-size: 1.3em;">
+                                    ▶️ Ejecutar Código JavaScript
+                                </div>
+                                <button class="run-button" onclick="executeCode()">
+                                    🚀 Ejecutar y Ver Resultado
+                                </button>
+                            </div>
+                            <div class="output-terminal" id="code-output">
+Modifica los valores en el código JavaScript y presiona "Ejecutar" para ver los cambios...
+
+💡 Recuerda la metodología:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ Identifica qué se repite
+✨ Encuentra la variable de control  
+✨ Define la condición de parada
+✨ No olvides actualizar la variable
+
+¡Experimenta con diferentes valores!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navigation-controls">
+                        <button class="nav-button secondary" onclick="showStep(3)">⬅️ Anterior</button>
+                        <button class="nav-button secondary" onclick="backToExercises()">📋 Otros Ejercicios</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // BASE DE DATOS DE EJERCICIOS
+        // ==========================================
+        const exerciseDatabase = {
+            1: { // Secuencias Básicas
+                name: "Secuencias Básicas",
+                exercises: [
+                    {
+                        id: 1,
+                        title: "Números del 1 a N",
+                        description: "Mostrar todos los números desde 1 hasta N",
+                        problem: `
+                            <h3>📋 Ejercicio 1: Presentar los números del 1 a N</h3>
+                            <p><strong>Descripción:</strong> Crear un programa que muestre todos los números desde 1 hasta N.</p>
+                            <br>
+                            <p><strong>📥 Entrada:</strong> Un número N (entero positivo)</p>
+                            <p><strong>📤 Salida:</strong> Todos los números desde 1 hasta N, uno por línea</p>
+                            <p><strong>🎯 Ejemplo:</strong> Si N=5 → mostrar: 1, 2, 3, 4, 5</p>
+                        `,
+                        sketch: `
+                            <div style="text-align: center; font-size: 1.3em; color: #e65100; font-weight: bold; margin-bottom: 25px;">
+                                Ejemplo: N = 5
+                            </div>
+                            <div style="display: flex; justify-content: center; gap: 30px; margin: 25px 0;">
+                                <div style="background: #2196f3; color: white; padding: 15px 25px; border-radius: 20px; font-weight: bold;">i = 1</div>
+                                <div style="background: #2196f3; color: white; padding: 15px 25px; border-radius: 20px; font-weight: bold;">N = 5</div>
+                            </div>
+                            <div style="background: white; padding: 25px; border-radius: 12px; margin: 20px 0; border: 3px dashed #ff9800;">
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa;">
+                                    <div style="background: #ff9800; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">1</div>
+                                    <div style="flex: 1;">Escribir i → "1"</div>
+                                    <div style="background: #667eea; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 1</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa;">
+                                    <div style="background: #ff9800; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">2</div>
+                                    <div style="flex: 1;">Escribir i → "2"</div>
+                                    <div style="background: #667eea; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 2</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa;">
+                                    <div style="background: #ff9800; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">3</div>
+                                    <div style="flex: 1;">Escribir i → "3"</div>
+                                    <div style="background: #667eea; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 3</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa;">
+                                    <div style="background: #ff9800; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">4</div>
+                                    <div style="flex: 1;">Escribir i → "4"</div>
+                                    <div style="background: #667eea; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 4</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa;">
+                                    <div style="background: #ff9800; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">5</div>
+                                    <div style="flex: 1;">Escribir i → "5"</div>
+                                    <div style="background: #667eea; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 5</div>
+                                </div>
+                            </div>
+                            <div style="text-align: center; color: #4caf50; font-weight: bold; font-size: 1.2em; margin-top: 20px;">
+                                ✅ Muestro los números de 1 en 1 hasta llegar a N
+                            </div>
+                        `,
+                        analysis: `
+                            <div style="background: white; padding: 25px; border-radius: 15px; margin: 20px 0; border: 3px solid #9c27b0;">
+                                <h4 style="color: #6a1b9a; margin-bottom: 15px; display: flex; align-items: center;">
+                                    <span style="margin-right: 10px; font-size: 1.2em;">🔍</span>
+                                    ¿Qué proceso se repite?
+                                </h4>
+                                <p><strong>Respuesta:</strong> Escribir el valor de i</p>
+                                <p style="color: #666; font-style: italic; margin-top: 8px;">El núcleo del ciclo es mostrar cada número secuencialmente.</p>
+                            </div>
+                            <div style="background: white; padding: 25px; border-radius: 15px; margin: 20px 0; border: 3px solid #9c27b0;">
+                                <h4 style="color: #6a1b9a; margin-bottom: 15px; display: flex; align-items: center;">
+                                    <span style="margin-right: 10px; font-size: 1.2em;">📊</span>
+                                    ¿Qué variable cuenta las repeticiones?
+                                </h4>
+                                <p><strong>Respuesta:</strong> La variable i (índice/contador)</p>
+                                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                    <ul style="margin-left: 20px;">
+                                        <li><strong>Valor inicial:</strong> i = 1</li>
+                                        <li><strong>Incremento:</strong> i = i + 1</li>
+                                        <li><strong>Valor final:</strong> i = N</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="background: white; padding: 25px; border-radius: 15px; margin: 20px 0; border: 3px solid #9c27b0;">
+                                <h4 style="color: #6a1b9a; margin-bottom: 15px; display: flex; align-items: center;">
+                                    <span style="margin-right: 10px; font-size: 1.2em;">⚡</span>
+                                    ¿Cuál es la condición de control?
+                                </h4>
+                                <p><strong>Respuesta:</strong> Continuar MIENTRAS i ≤ N</p>
+                                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                    <p><strong>Condición específica:</strong> i ≤ 5</p>
+                                    <p><strong>Condición general:</strong> i ≤ N</p>
+                                </div>
+                            </div>
+                        `,
+                        pseudocode: `Funcion mostrarNumeros(n)
+    Definir i Como Entero
+    
+    Escribir "Números del 1 al ", n, ":"
+    Escribir "==================="
+    
+    // 1️⃣ INICIALIZACIÓN
+    i <- 1
+    
+    // 2️⃣ CICLO MIENTRAS
+    Mientras i <= n Hacer
+        // 3️⃣ PROCESO REPETITIVO
+        Escribir i
+        
+        // 4️⃣ ACTUALIZACIÓN
+        i <- i + 1
+    FinMientras
+    
+    Escribir "==================="
+    Escribir "Total de números: ", n
+FinFuncion
+
+Algoritmo Principal
+    mostrarNumeros(5)
+FinAlgoritmo`,
+                        javascript: `// 🎯 MODIFICA este valor para experimentar:
+const n = 5; // ← Cambia este número
+
+function mostrarNumeros(n) {
+    console.log(\`Números del 1 al \${n}:\`);
+    console.log("===================");
+    
+    // 1️⃣ INICIALIZACIÓN
+    let i = 1;
+    
+    // 2️⃣ CICLO WHILE
+    while (i <= n) {
+        // 3️⃣ PROCESO REPETITIVO
+        console.log(i);
+        
+        // 4️⃣ ACTUALIZACIÓN
+        i = i + 1;
+    }
+    
+    console.log("===================");
+    console.log(\`Total de números: \${n}\`);
+}
+
+// 🚀 LLAMADA A LA FUNCIÓN
+mostrarNumeros(n);
+
+// 🔥 EXPERIMENTOS:
+// 1. Cambia n = 10
+// 2. Cuenta hacia atrás: desde n hasta 1
+// 3. Solo números impares: i = i + 2`
+                    },
+                    {
+                        id: 2,
+                        title: "Números Pares de N números",
+                        description: "Mostrar los primeros N números pares",
+                        problem: `
+                            <h3>📋 Ejercicio 2: Presentar los números pares de N números</h3>
+                            <p><strong>Descripción:</strong> Crear un programa que muestre los primeros N números pares.</p>
+                            <br>
+                            <p><strong>📥 Entrada:</strong> Un número N (cantidad de pares a mostrar)</p>
+                            <p><strong>📤 Salida:</strong> Los primeros N números pares</p>
+                            <p><strong>🎯 Ejemplo:</strong> Si N=5 → mostrar: 2, 4, 6, 8, 10</p>
+                        `,
+                        sketch: `
+                            <div style="text-align: center; font-size: 1.3em; color: #e65100; font-weight: bold; margin-bottom: 25px;">
+                                Ejemplo: N = 5 (mostrar 5 números pares)
+                            </div>
+                            <div style="display: flex; justify-content: center; gap: 30px; margin: 25px 0;">
+                                <div style="background: #2196f3; color: white; padding: 15px 25px; border-radius: 20px; font-weight: bold;">contador = 1</div>
+                                <div style="background: #2196f3; color: white; padding: 15px 25px; border-radius: 20px; font-weight: bold;">par = 2</div>
+                                <div style="background: #2196f3; color: white; padding: 15px 25px; border-radius: 20px; font-weight: bold;">N = 5</div>
+                            </div>
+                            <div style="background: white; padding: 25px; border-radius: 12px; margin: 20px 0; border: 3px dashed #ff9800;">
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa;">
+                                    <div style="background: #ff9800; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">1</div>
+                                    <div style="flex: 1;">Escribir par → "2"</div>
+                                    <div style="background: #667eea; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">contador=1, par=4</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa;">
+                                    <div style="background: #ff9800; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">2</div>
+                                    <div style="flex: 1;">Escribir par → "4"</div>
+                                    <div style="background: #667eea; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">contador=2, par=6</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa;">
+                                    <div style="background: #ff9800; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">3</div>
+                                    <div style="flex: 1;">Escribir par → "6"</div>
+                                    <div style="background: #667eea; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">contador=3, par=8</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa;">
+                                    <div style="background: #ff9800; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">4</div>
+                                    <div style="flex: 1;">Escribir par → "8"</div>
+                                    <div style="background: #667eea; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">contador=4, par=10</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #f8f9fa;">
+                                    <div style="background: #ff9800; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">5</div>
+                                    <div style="flex: 1;">Escribir par → "10"</div>
+                                    <div style="background: #667eea; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">contador=5, par=12</div>
+                                </div>
+                            </div>
+                            <div style="text-align: center; color: #4caf50; font-weight: bold; font-size: 1.2em; margin-top: 20px;">
+                                ✅ Genero N números pares incrementando de 2 en 2
+                            </div>
+                        `,
+                        analysis: `
+                            <div style="background: white; padding: 25px; border-radius: 15px; margin: 20px 0; border: 3px solid #9c27b0;">
+                                <h4 style="color: #6a1b9a; margin-bottom: 15px;">🔍 ¿Qué proceso se repite?</h4>
+                                <p><strong>Respuesta:</strong> Escribir el valor de la variable "par"</p>
+                                <p style="color: #666; font-style: italic;">El núcleo es mostrar cada número par generado.</p>
+                            </div>
+                            <div style="background: white; padding: 25px; border-radius: 15px; margin: 20px 0; border: 3px solid #9c27b0;">
+                                <h4 style="color: #6a1b9a; margin-bottom: 15px;">📊 ¿Qué variable cuenta las repeticiones?</h4>
+                                <p><strong>Respuesta:</strong> La variable "contador"</p>
+                                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                    <p><strong>contador:</strong> cuenta cuántos pares hemos mostrado</p>
+                                    <p><strong>par:</strong> genera los números pares (2, 4, 6, 8...)</p>
+                                </div>
+                            </div>
+                            <div style="background: white; padding: 25px; border-radius: 15px; margin: 20px 0; border: 3px solid #9c27b0;">
+                                <h4 style="color: #6a1b9a; margin-bottom: 15px;">⚡ ¿Cuál es la condición de control?</h4>
+                                <p><strong>Respuesta:</strong> Continuar MIENTRAS contador ≤ N</p>
+                                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                    <p>Necesitamos mostrar exactamente N números pares</p>
+                                </div>
+                            </div>
+                        `,
+                        pseudocode: `Funcion mostrarPares(n)
+    Definir contador, par Como Entero
+    
+    Escribir "Primeros ", n, " números pares:"
+    Escribir "========================"
+    
+    // 1️⃣ INICIALIZACIÓN
+    contador <- 1
+    par <- 2
+    
+    // 2️⃣ CICLO MIENTRAS
+    Mientras contador <= n Hacer
+        // 3️⃣ PROCESO REPETITIVO
+        Escribir par
+        
+        // 4️⃣ ACTUALIZACIÓN
+        contador <- contador + 1
+        par <- par + 2
+    FinMientras
+    
+    Escribir "========================"
+    Escribir "Total mostrados: ", n
+FinFuncion
+
+Algoritmo Principal
+    mostrarPares(5)
+FinAlgoritmo`,
+                        javascript: `// 🎯 MODIFICA este valor para experimentar:
+const n = 5; // ← Cambia cuántos pares quieres
+
+function mostrarPares(n) {
+    console.log(\`Primeros \${n} números pares:\`);
+    console.log("========================");
+    
+    // 1️⃣ INICIALIZACIÓN
+    let contador = 1;
+    let par = 2;
+    
+    // 2️⃣ CICLO WHILE
+    while (contador <= n) {
+        // 3️⃣ PROCESO REPETITIVO
+        console.log(par);
+        
+        // 4️⃣ ACTUALIZACIÓN
+        contador = contador + 1;
+        par = par + 2;
+    }
+    
+    console.log("========================");
+    console.log(\`Total mostrados: \${n}\`);
+}
+
+// 🚀 LLAMADA A LA FUNCIÓN
+mostrarPares(n);
+
+// 🔥 EXPERIMENTOS:
+// 1. Cambia n = 10
+// 2. Números impares: par = 1, par = par + 2
+// 3. Múltiplos de 3: par = 3, par = par + 3`
+                    },
+                    {
+                        id: 3,
+                        title: "Múltiplos de 3 de 1 a N",
+                        description: "Mostrar todos los múltiplos de 3 desde 1 hasta N",
+                        problem: `
+                            <h3>📋 Ejercicio 3: Presentar múltiplos de 3 de 1 a N números</h3>
+                            <p><strong>Descripción:</strong> Crear un programa que muestre todos los múltiplos de 3 en el rango de 1 a N.</p>
+                            <br>
+                            <p><strong>📥 Entrada:</strong> Un número N (límite superior del rango)</p>
+                            <p><strong>📤 Salida:</strong> Todos los múltiplos de 3 desde 1 hasta N</p>
+                            <p><strong>🎯 Ejemplo:</strong> Si N=15 → mostrar: 3, 6, 9, 12, 15</p>
+                        `,
+                        sketch: `
+                            <div style="text-align: center; font-size: 1.3em; color: #e65100; font-weight: bold; margin-bottom: 25px;">
+                                Ejemplo: N = 15 (buscar múltiplos de 3)
+                            </div>
+                            <div style="display: flex; justify-content: center; gap: 30px; margin: 25px 0;">
+                                <div style="background: #2196f3; color: white; padding: 15px 25px; border-radius: 20px; font-weight: bold;">i = 1</div>
+                                <div style="background: #2196f3; color: white; padding: 15px 25px; border-radius: 20px; font-weight: bold;">N = 15</div>
+                            </div>
+                            <div style="background: white; padding: 25px; border-radius: 12px; margin: 20px 0; border: 3px dashed #ff9800;">
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #ffebee;">
+                                    <div style="background: #f44336; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">1</div>
+                                    <div style="flex: 1;">1 % 3 = 1 ≠ 0 → NO es múltiplo</div>
+                                    <div style="background: #f44336; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 2</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #ffebee;">
+                                    <div style="background: #f44336; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">2</div>
+                                    <div style="flex: 1;">2 % 3 = 2 ≠ 0 → NO es múltiplo</div>
+                                    <div style="background: #f44336; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 3</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #e8f5e8;">
+                                    <div style="background: #4caf50; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">3</div>
+                                    <div style="flex: 1;">3 % 3 = 0 → SÍ es múltiplo → Escribir "3"</div>
+                                    <div style="background: #4caf50; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 4</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #ffebee;">
+                                    <div style="background: #f44336; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">4</div>
+                                    <div style="flex: 1;">4 % 3 = 1 ≠ 0 → NO es múltiplo</div>
+                                    <div style="background: #f44336; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 5</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #ffebee;">
+                                    <div style="background: #f44336; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">5</div>
+                                    <div style="flex: 1;">5 % 3 = 2 ≠ 0 → NO es múltiplo</div>
+                                    <div style="background: #f44336; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 6</div>
+                                </div>
+                                <div style="display: flex; align-items: center; padding: 10px; margin: 8px 0; border-radius: 8px; background: #e8f5e8;">
+                                    <div style="background: #4caf50; color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 20px; font-weight: bold;">6</div>
+                                    <div style="flex: 1;">6 % 3 = 0 → SÍ es múltiplo → Escribir "6"</div>
+                                    <div style="background: #4caf50; color: white; padding: 8px 15px; border-radius: 15px; font-weight: bold;">i = 7</div>
+                                </div>
+                                <div style="text-align: center; color: #666; font-style: italic; margin: 15px 0;">
+                                    ... continúa hasta i = 15 ...
+                                </div>
+                            </div>
+                            <div style="text-align: center; color: #4caf50; font-weight: bold; font-size: 1.2em; margin-top: 20px;">
+                                ✅ Verifico cada número y muestro solo los múltiplos de 3
+                            </div>
+                        `,
+                        analysis: `
+                            <div style="background: white; padding: 25px; border-radius: 15px; margin: 20px 0; border: 3px solid #9c27b0;">
+                                <h4 style="color: #6a1b9a; margin-bottom: 15px;">🔍 ¿Qué proceso se repite?</h4>
+                                <p><strong>Respuesta:</strong> Verificar si un número es múltiplo de 3 y escribirlo si lo es</p>
+                                <p style="color: #666; font-style: italic;">Uso el operador módulo (%) para verificar si es múltiplo.</p>
+                            </div>
+                            <div style="background: white; padding: 25px; border-radius: 15px; margin: 20px 0; border: 3px solid #9c27b0;">
+                                <h4 style="color: #6a1b9a; margin-bottom: 15px;">📊 ¿Qué variable cuenta las repeticiones?</h4>
+                                <p><strong>Respuesta:</strong> La variable i (recorre de 1 a N)</p>
+                                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                    <p><strong>i:</strong> recorre todos los números del 1 al N</p>
+                                    <p><strong>Condición:</strong> si (i % 3 == 0) entonces es múltiplo</p>
+                                </div>
+                            </div>
+                            <div style="background: white; padding: 25px; border-radius: 15px; margin: 20px 0; border: 3px solid #9c27b0;">
+                                <h4 style="color: #6a1b9a; margin-bottom: 15px;">⚡ ¿Cuál es la condición de control?</h4>
+                                <p><strong>Respuesta:</strong> Continuar MIENTRAS i ≤ N</p>
+                                <div style="background: #e8f5e8; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                    <p>Debo verificar todos los números desde 1 hasta N</p>
+                                </div>
+                            </div>
+                        `,
+                        pseudocode: `Funcion mostrarMultiplosDe3(n)
+    Definir i, contador Como Entero
+    
+    Escribir "Múltiplos de 3 del 1 al ", n, ":"
+    Escribir "=========================="
+    
+    // 1️⃣ INICIALIZACIÓN
+    i <- 1
+    contador <- 0
+    
+    // 2️⃣ CICLO MIENTRAS
+    Mientras i <= n Hacer
+        // 3️⃣ PROCESO REPETITIVO
+        Si i % 3 = 0 Entonces
+            Escribir i, " (múltiplo de 3)"
+            contador <- contador + 1
+        FinSi
+        
+        // 4️⃣ ACTUALIZACIÓN
+        i <- i + 1
+    FinMientras
+    
+    Escribir "=========================="
+    Escribir "Total múltiplos encontrados: ", contador
+FinFuncion
+
+Algoritmo Principal
+    mostrarMultiplosDe3(15)
+FinAlgoritmo`,
+                        javascript: `// 🎯 MODIFICA este valor para experimentar:
+const n = 15; // ← Cambia el rango hasta donde buscar
+
+function mostrarMultiplosDe3(n) {
+    console.log(\`Múltiplos de 3 del 1 al \${n}:\`);
+    console.log("==========================");
+    
+    // 1️⃣ INICIALIZACIÓN
+    let i = 1;
+    let contador = 0;
+    
+    // 2️⃣ CICLO WHILE
+    while (i <= n) {
+        // 3️⃣ PROCESO REPETITIVO
+        if (i % 3 === 0) {
+            console.log(\`\${i} (múltiplo de 3)\`);
+            contador = contador + 1;
+        }
+        
+        // 4️⃣ ACTUALIZACIÓN
+        i = i + 1;
+    }
+    
+    console.log("==========================");
+    console.log(\`Total múltiplos encontrados: \${contador}\`);
+}
+
+// 🚀 LLAMADA A LA FUNCIÓN
+mostrarMultiplosDe3(n);
+
+// 🔥 EXPERIMENTOS:
+// 1. Cambia n = 30
+// 2. Múltiplos de 5: i % 5 === 0
+// 3. Múltiplos de 2 Y 3: i % 6 === 0`
+                    }
+                ]
+            }
+            // Aquí agregaré las demás categorías...
+        };
+
+        // ==========================================
+        // VARIABLES GLOBALES
+        // ==========================================
+        let currentCategory = null;
+        let currentExercise = null;
+        let currentStep = 1;
+
+        // ==========================================
+        // FUNCIONES DE NAVEGACIÓN
+        // ==========================================
+        function showCategory(categoryId) {
+            currentCategory = categoryId;
+            const category = exerciseDatabase[categoryId];
+            
+            if (!category) return;
+
+            // Ocultar categorías y mostrar ejercicios
+            document.getElementById('categories-section').style.display = 'none';
+            document.getElementById('exercises-selector').classList.add('visible');
+            
+            // Actualizar título
+            document.getElementById('selector-title').textContent = `📚 ${category.name}`;
+            
+            // Llenar grid de ejercicios
+            const exercisesGrid = document.getElementById('exercises-grid');
+            exercisesGrid.innerHTML = '';
+            
+            category.exercises.forEach(exercise => {
+                const exerciseCard = document.createElement('div');
+                exerciseCard.className = 'exercise-card';
+                exerciseCard.onclick = () => showExercise(exercise);
+                
+                exerciseCard.innerHTML = `
+                    <div class="exercise-number">${exercise.id}</div>
+                    <div class="exercise-title">${exercise.title}</div>
+                    <div class="exercise-description">${exercise.description}</div>
+                `;
+                
+                exercisesGrid.appendChild(exerciseCard);
+            });
+        }
+
+        function showExercise(exercise) {
+            currentExercise = exercise;
+            
+            // Ocultar selector y mostrar workspace
+            document.getElementById('exercises-selector').classList.remove('visible');
+            document.getElementById('exercise-workspace').classList.add('active');
+            
+            // Actualizar header del workspace
+            document.getElementById('current-exercise-title').textContent = `Ejercicio ${exercise.id}: ${exercise.title}`;
+            document.getElementById('exercise-breadcrumb').textContent = `${exerciseDatabase[currentCategory].name} > ${exercise.title}`;
+            
+            // Cargar contenido del ejercicio
+            loadExerciseContent(exercise);
+            
+            // Mostrar primer paso
+            showStep(1);
+        }
+
+        function loadExerciseContent(exercise) {
+            // Cargar problema
+            document.getElementById('problem-content').innerHTML = exercise.problem;
+            
+            // Cargar bosquejo
+            document.getElementById('sketch-content').innerHTML = exercise.sketch;
+            
+            // Cargar análisis
+            document.getElementById('analysis-content').innerHTML = exercise.analysis;
+            
+            // Cargar código
+            document.getElementById('code-pseint').value = exercise.pseudocode;
+            document.getElementById('code-javascript').value = exercise.javascript;
+        }
+
+        function backToCategories() {
+            document.getElementById('exercises-selector').classList.remove('visible');
+            document.getElementById('categories-section').style.display = 'block';
+            currentCategory = null;
+        }
+
+        function backToExercises() {
+            document.getElementById('exercise-workspace').classList.remove('active');
+            document.getElementById('exercises-selector').classList.add('visible');
+            currentExercise = null;
+        }
+
+        function showStep(stepNumber) {
+            // Ocultar todos los pasos
+            for (let i = 1; i <= 4; i++) {
+                const step = document.getElementById(`step-${i}`);
+                if (step) {
+                    step.classList.add('hidden');
+                    step.classList.remove('visible');
+                }
+            }
+            
+            // Mostrar paso solicitado
+            setTimeout(() => {
+                const currentStepElement = document.getElementById(`step-${stepNumber}`);
+                if (currentStepElement) {
+                    currentStepElement.classList.remove('hidden');
+                    currentStepElement.classList.add('visible');
+                    currentStepElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 200);
+            
+            currentStep = stepNumber;
+        }
+
+        function switchLanguage(language) {
+            // Actualizar pestañas
+            document.querySelectorAll('.language-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Mostrar/ocultar editores
+            if (language === 'pseint') {
+                document.getElementById('editor-pseint').classList.remove('hidden');
+                document.getElementById('editor-javascript').classList.add('hidden');
+            } else {
+                document.getElementById('editor-pseint').classList.add('hidden');
+                document.getElementById('editor-javascript').classList.remove('hidden');
+            }
+        }
+
+        function executeCode() {
+            try {
+                const output = document.getElementById('code-output');
+                output.textContent = '⚡ Ejecutando código JavaScript...\n';
+                
+                // Sistema de captura de console.log
+                let capturedOutput = [];
+                const customConsole = {
+                    log: function(...args) {
+                        capturedOutput.push(
+                            args.map(arg => 
+                                typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+                            ).join(' ')
+                        );
+                    }
+                };
+                
+                // Obtener y ejecutar código
+                const code = document.getElementById('code-javascript').value;
+                const modifiedCode = code.replace(/console\.log/g, 'customConsole.log');
+                
+                const executeFunction = new Function('customConsole', modifiedCode);
+                executeFunction(customConsole);
+                
+                // Mostrar resultados
+                if (capturedOutput.length > 0) {
+                    output.textContent = capturedOutput.join('\n');
+                    output.style.borderColor = '#28a745';
+                } else {
+                    output.textContent = '✅ Código ejecutado correctamente\n(Sin salida de console.log)';
+                    output.style.borderColor = '#17a2b8';
+                }
+                
+                setTimeout(() => {
+                    output.style.borderColor = '#2d2d2d';
+                }, 3000);
+                
+            } catch (error) {
+                const output = document.getElementById('code-output');
+                let errorMsg = `❌ Error: ${error.message}\n\n💡 Sugerencias:\n`;
+                
+                if (error.message.includes('Unexpected token')) {
+                    errorMsg += '- Revisa la sintaxis del código\n';
+                    errorMsg += '- Verifica paréntesis y llaves\n';
+                } else if (error.message.includes('is not defined')) {
+                    errorMsg += '- Verifica que las variables estén definidas\n';
+                    errorMsg += '- Revisa los nombres de variables\n';
+                } else {
+                    errorMsg += '- Verifica la lógica del código\n';
+                    errorMsg += '- Asegúrate de que la sintaxis sea correcta\n';
+                }
+                
+                output.textContent = errorMsg;
+                output.style.borderColor = '#dc3545';
+                
+                setTimeout(() => {
+                    output.style.borderColor = '#2d2d2d';
+                }, 4000);
+            }
+        }
+
+        // ==========================================
+        // INICIALIZACIÓN
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎉 Plataforma de Ejercicios WHILE cargada');
+            console.log('📚 15 ejercicios categorizados disponibles');
+            console.log('🎯 Selecciona una categoría para comenzar');
+        });
+    </script>
+</body>
+</html>

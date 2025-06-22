@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repetir Nombre</title>
+  <link rel="stylesheet" href="../css/estilo_form.css"> <!-- Enlace al archivo CSS -->
+  <script src="../js/n_veces.js" defer></script> <!-- Enlace al archivo JavaScript -->
+  <style>
+      body {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+          font-family: Arial, sans-serif;
+          background-color: #f4f4f4; /* Color de fondo */
+      }
+      .recuadro {
+          border: 2px solid #007BFF; /* Color del borde */
+          border-radius: 10px; /* Bordes redondeados */
+          padding: 20px;
+          background-color: white; /* Color de fondo del recuadro */
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+          text-align: center;
+          margin-bottom: 20px; /* Espacio entre recuadros */
+      }
+      input {
+          margin: 10px 0;
+          padding: 8px;
+          width: 80%; /* Ancho del input */
+          max-width: 300px; /* Ancho máximo */
+      }
+      button {
+          margin: 5px;
+          padding: 10px 15px;
+          cursor: pointer;
+      }
+      .resultado-recuadro {
+          border: 2px dashed #28a745; /* Borde de la respuesta */
+          border-radius: 10px; /* Bordes redondeados */
+          padding: 10px;
+          background-color: #e9ffe9; /* Color de fondo del recuadro de respuesta */
+          color: #333; /* Color del texto */
+          min-height: 50px; /* Altura mínima del recuadro */
+      }
+  </style>
+</head>
+<body>
+  <div class="recuadro">
+      <h1>Repetir un Nombre N Veces</h1>
+      
+      <label for="nombreInput">Ingresa un nombre:</label>
+      <input type="text" id="nombreInput" placeholder="Nombre">
+      
+      <label for="vecesInput">Ingresa cuántas veces:</label>
+      <input type="number" id="vecesInput" placeholder="Número de veces" min="1">
+      
+      <button id="presentarBtn">Presentar</button>
+      <button id="limpiarBtn">Limpiar</button>
+      <a href="../menu.html"><button id="regresarBtn">Regresar</button></a> <!-- Enlace al menú -->
+
+      <div class="resultado-recuadro" id="resultado"></div> <!-- Para mostrar los resultados -->
+  </div>
+</body>
+</html>

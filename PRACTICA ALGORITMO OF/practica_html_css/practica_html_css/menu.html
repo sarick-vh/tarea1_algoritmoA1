@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Programación</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Satisfy&family=Shadows+Into+Light&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Shadows Into Light', cursive,  'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #b66cff 0%, #ebadf0 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: rgb(252, 252, 252);
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 8px rgb(62, 1, 62);
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #210140 0%, #c183c6 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card-title {
+            font-family: 'Satisfy', cursive;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .card-description {
+            color: #fffafa;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .card:nth-child(1) .card-icon { color: #050505; }
+        .card:nth-child(2) .card-icon { color: #ebadf0; }
+        .card:nth-child(3) .card-icon { color: #0d0e0e; }
+        .card:nth-child(4) .card-icon { color: #b6f8cc; }
+        .card:nth-child(5) .card-icon { color: #d7abec; }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Ejercicios de Programación</h1>
+        
+        <div class="cards-container">
+            <a href="./pages/edad.html" class="card">
+                <span class="card-icon">🔢</span>
+                <h3 class="card-title">Edad</h3>
+                <p class="card-description">Dada una edad presenta si es mayor o menor de edad</p>
+            </a>
+
+            <a href="./pages/mayor_dos_numeros.html" class="card">
+                <span class="card-icon">📝</span>
+                <h3 class="card-title">Mayor dos Numeros</h3>
+                <p class="card-description">Dados dos numeros presenta el mayor de ellos</p>
+            </a>
+
+            <a href="./pages/tabla_ssumar.html" class="card">
+                <span class="card-icon">➕</span>
+                <h3 class="card-title">Tabla sumar</h3>
+                <p class="card-description">Dado un numero presente su tabla de sumar</p>
+            </a>
+            <a href="./pages/nombre_n_veces.html" class="card">
+                <span class="card-icon">🪪</span>
+                <h3 class="card-title">Nombres</h3>
+                <p class="card-description">Mostrar N veces un nombre </p>
+            </a>
+             <a href="./pages/numero_n_veces.html" class="card">
+                <span class="card-icon">1️⃣</span>
+                <h3 class="card-title">Numeros</h3>
+                <p class="card-description">Mostrar N veces de un numero </p>
+            </a>
+             <a href="./pages/pares_hasta_n.html" class="card">
+                <span class="card-icon">2️⃣</span>
+                <h3 class="card-title">Numeros Pares</h3>
+                <p class="card-description">Mostrar los numeros pares de N  </p>
+            </a>
+             <a href="./pages/multiplos_hastaN.html" class="card">
+                <span class="card-icon">🧮</span>
+                <h3 class="card-title">Multiplos</h3>
+                <p class="card-description">Mostrar los multiplos has N numero </p>
+            </a>
+             <a href="./pages/tabla_multiplicar.html" class="card">
+                <span class="card-icon">✖️</span>
+                <h3 class="card-title">Tabla Multiplicar</h3>
+                <p class="card-description">Muestra la tabla de multiplicar de N numero hasta N numero</p>
+            </a>
+             <a href="./pages/numerosentre_dosnumeros.html" class="card">
+                <span class="card-icon">1️⃣2️⃣3️⃣</span>
+                <h3 class="card-title">Entre Dos Numeros</h3>
+                <p class="card-description">Muestra los numeros que hay entre dos numeros</p>
+            </a>
+              <a href="./pages/paresentre_dosnumeros.html" class="card">
+                <span class="card-icon">2️⃣4️⃣6️⃣</span>
+                <h3 class="card-title">Pares</h3>
+                <p class="card-description">Muestra los Pares entre Dos Numeros</p>
+            </a>
+              <a href="./pages/sumade_paresentre_dosnumeros.html" class="card">
+                <span class="card-icon">2️⃣➕4️⃣</span>
+                <h3 class="card-title">Suma de Pares</h3>
+                <p class="card-description">Muestra la Suma de dos Pares</p>
+            </a>
+            <a href="./pages/divisoresde_cualquier_numero.html" class="card">
+                <span class="card-icon">🎲</span>
+                <h3 class="card-title">Divisor de cualquier numero</h3>
+                <p class="card-description">Muestra la divisores de cualquier de cualquier numero</p>
+            </a>
+            <a href="./pages/sumade_losdivisores.html" class="card">
+                <span class="card-icon">➕🟣</span>
+                <h3 class="card-title">Suma de los Divisores </h3>
+                <p class="card-description">Muestra la suma de los divisores </p>
+            </a>
+             <a href="./pages/unnumero_pefecto.html" class="card">
+                <span class="card-icon">✔️🟡</span>
+                <h3 class="card-title">Numero Perfecto</h3>
+                <p class="card-description"> Verificar si un Numero es Perfecto </p>
+            </a>
+            <a href="./pages/verificarsi_unnumero_esprimo.html" class="card">
+                <span class="card-icon">2️⃣3️⃣5️⃣</span>
+                <h3 class="card-title">Numero Primo</h3>
+                <p class="card-description"> Verificar si un Numero es Primo</p>
+            </a>
+             <a href="./pages/multiplicacionpor_sumas_sucesivas.html" class="card">
+                <span class="card-icon">➕➕</span>
+                <h3 class="card-title">Multiplicacion sucesivas</h3>
+                <p class="card-description"> Verificar la multiplicacion por sumas sucesivas</p>
+            </a>
+             <a href="./pages/divisionpor_restas_sucesivas.html" class="card">
+                <span class="card-icon">➗➗</span>
+                <h3 class="card-title">Division Sucesiva Sucesivas</h3>
+                <p class="card-description"> Verificar la division sucesiva</p>
+            </a>
+
+             <a href="./pages/reto1_de1an.html" class="card">
+                <span class="card-icon">🟣</span>
+                <h3 class="card-title">Reto Número Del 1 a N</h3>
+                <p class="card-description"> Verificar un numero del 1 a N </p>
+            </a>
+            <a href="./pages/reto2_numeropares_deNnumeros.html" class="card">
+                <span class="card-icon">🟡</span>
+                <h3 class="card-title">Reto Numeros Pares De N Número</h3>
+                <p class="card-description"> Verificar Los numeros pares de N numeros</p>
+            </a>
+
+            <a href="./pages/reto3_Múltiplos de 3 de 1 a N.html" class="card">
+                <span class="card-icon">🟢</span>
+                <h3 class="card-title">Reto Multiplos De 3 De 1 a N </h3>
+                <p class="card-description"> Verificar Los Multiplos de 3 de 1 a N</p>
+            </a>
+            <a href="./pages/reto4_Mensaje N Veces.html" class="card">
+                <span class="card-icon">🔴</span>
+                <h3 class="card-title">Mensaje</h3>
+                <p class="card-description"> Presentar mensaje N veces</p>
+            </a>
+            <a href="./pages/reto5_multiplosdeX.html" class="card">
+                <span class="card-icon">🟤</span>
+                <h3 class="card-title">Multiplo De X</h3>
+                <p class="card-description"> Presentar el multiplo de X</p>
+            </a>
+            <a href="./pages/reto6_Tabla de Sumar (1+X hasta 12+X).html" class="card">
+                <span class="card-icon">⚫</span>
+                <h3 class="card-title">Reto Tabla De Sumar </h3>
+                <p class="card-description"> Presentar la tabla de sumar (1+X hasta 12+X) </p>
+            </a>
+            <a href="./pages/reto8_Números entre A y B.html" class="card">
+                <span class="card-icon">⚪</span>
+                <h3 class="card-title">Reto Numeros entre A y B</h3>
+                <p class="card-description"> Presentar Los Numeros entre A y B</p>
+            </a>
+            <a href="./pages/reto14_Verificar si un Número es Primo.html" class="card">
+                <span class="card-icon">🟠</span>
+                <h3 class="card-title">Reto De Un Numero Primo</h3>
+                <p class="card-description"> Verificar si un Numero es Primo</p>
+            </a>
+
+
+
+              <a href="./pages/EJERCICIO1.html" class="card">
+                <span class="card-icon">🍇🥝</span>
+                <h3 class="card-title">Arreglo Valores</h3>
+                <p class="card-description"> Crear un arreglo con valores</p>
+            </a>
+             <a href="./pages/EJERCICIO2.html" class="card">
+                <span class="card-icon">🔤</span>
+                <h3 class="card-title">Elemento con Push</h3>
+                <p class="card-description"> Crear un elemento con Push</p>
+            </a>
+            <a href="./pages/EJERCICIO3.html" class="card">
+                <span class="card-icon">❌🔤</span>
+                <h3 class="card-title">Elemento sin Push</h3>
+                <p class="card-description"> Crear un elemento sin Push</p>
+            </a>
+            <a href="./pages/EJERCICIO4.html" class="card">
+                <span class="card-icon">♾️</span>
+                <h3 class="card-title">Cadena</h3>
+                <p class="card-description"> Crear y mostrar una cadena</p>
+            </a>
+             <a href="./pages/EJERCICIO5.html" class="card">
+                <span class="card-icon">1️⃣2️⃣</span>
+                <h3 class="card-title">caracteres</h3>
+                <p class="card-description"> Mostrar la cantidad de caracteres</p>
+            </a>
+            <a href="./pages/EJERCICIO6.html" class="card">
+                <span class="card-icon">L U I S</span>
+                <h3 class="card-title">Cadena sin usar ciclos</h3>
+                <p class="card-description">Mostrar cada letra sin usar ciclos</p>
+            </a>
+             <a href="./pages/EJERCICIO7.html" class="card">
+                <span class="card-icon">H O L A</span>
+                <h3 class="card-title">Separar</h3>
+                <p class="card-description"> Separar letras usando .split()</p>
+            </a>
+               <a href="./pages/EJERCICIO8.html" class="card">
+                <span class="card-icon">10, 20, 30</span>
+                <h3 class="card-title">De Cadena a Arreglo</h3>
+                <p class="card-description"> Convertir cadena a arreglo de números con split y map</p>
+            </a>
+
+
+             </a>
+               <a href="./pages/EJERCICIO9.html" class="card">
+                <span class="card-icon">For</span>
+                <h3 class="card-title"> Arreglo con For</h3>
+                <p class="card-description">Recorrer un arreglo con for</p>
+            </a>
+             </a>
+               <a href="./pages/EJERCICIO10.html" class="card">
+                <span class="card-icon">While</span>
+                <h3 class="card-title">Arreglo con While</h3>
+                <p class="card-description"> Recorrer un arreglo con while</p>
+            </a>
+             </a>
+               <a href="./pages/EJERCICIO11.html" class="card">
+                <span class="card-icon">For</span>
+                <h3 class="card-title">Palabra con For</h3>
+                <p class="card-description">Mostrar cada letra de una palabra (con for)</p>
+            </a>
+             </a>
+               <a href="./pages/EJERCICIO12.html" class="card">
+                <span class="card-icon">While</span>
+                <h3 class="card-title">Letra con while</h3>
+                <p class="card-description">Mostrar cada letra (con while)</p>
+            </a>
+             </a>
+               <a href="./pages/EJERCICIO13.html" class="card">
+                <span class="card-icon">a, e, i, o, u</span>
+                <h3 class="card-title">Vocales</h3>
+                <p class="card-description">Contar vocales en una palabra</p>
+            </a>
+             </a>
+               <a href="./pages/EJERCICIO14.html" class="card">
+                <span class="card-icon">Letra por letra</span>
+                <h3 class="card-title">Dos palabras</h3>
+                <p class="card-description">Comparar dos palabras letra por letra</p>
+            </a>
+             </a>
+               <a href="./pages/EJERCICIO15.html" class="card">
+                <span class="card-icon">➗</span>
+                <h3 class="card-title">Divisores</h3>
+                <p class="card-description">Mostrar los divisores de cada número en un arreglo</p>
+            </a>
+             </a>
+               <a href="./pages/EJERCICIO16.html" class="card">
+                <span class="card-icon">➕➗</span>
+                <h3 class="card-title">Suma de Divisores</h3>
+                <p class="card-description">Sumar los divisores de cada número (sin incluir el propio
+número)</p>
+            </a>
+             </a>
+               <a href="./pages/EJERCICIO17.html" class="card">
+                <span class="card-icon">Perfecto</span>
+                <h3 class="card-title">Numero Perfecto</h3>
+                <p class="card-description">Verificar si cada número es perfecto</p>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
