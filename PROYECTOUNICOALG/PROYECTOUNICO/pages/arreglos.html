@@ -1,0 +1,100 @@
+<!-- arreglos.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ejercicios con Arreglos</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Ejercicios con Arreglos</h1>
+    <iframe src="/menu.html" frameborder="0"></iframe>
+  </header>
+   <nav>
+        <a href="/index.html">Inicio</a>
+        <a href="/menu.html">Menú</a>
+        <a href="../pages/ciclos.html">Condicionales</a>
+        <a href="../pages/cadena.html">Cadenas</a>
+        <a href="../pages/arreglos.html">Arreglos</a>
+    </nav>
+  <main>
+    <section>
+      <h2>1. Promedio de 5 Números</h2>
+      <input type="number" id="a1" placeholder="N1" />
+      <input type="number" id="a2" placeholder="N2" />
+      <input type="number" id="a3" placeholder="N3" />
+      <input type="number" id="a4" placeholder="N4" />
+      <input type="number" id="a5" placeholder="N5" />
+      <button onclick="promedio()">Calcular</button>
+      <p id="r1"></p>
+    </section>
+
+    <section>
+      <h2>2. Contar Impares</h2>
+      <input type="text" id="arrayImpares" placeholder="Ej: 2,3,5,6" />
+      <button onclick="contarImpares()">Contar</button>
+      <p id="r2"></p>
+    </section>
+
+    <section>
+      <h2>3. Mayores de Edad</h2>
+      <input type="text" id="edades" placeholder="Ej: 16,18,21" />
+      <button onclick="contarMayoresEdad()">Contar</button>
+      <p id="r3"></p>
+    </section>
+
+    <section>
+      <h2>4. Buscar Valor</h2>
+      <input type="text" id="buscarArr" placeholder="Valores" />
+      <input type="text" id="buscarVal" placeholder="Valor a buscar" />
+      <button onclick="buscarValor()">Buscar</button>
+      <p id="r4"></p>
+    </section>
+
+    <section>
+      <h2>5. Concatenar Palabras</h2>
+      <input type="text" id="palabrasArr" placeholder="palabra1,palabra2" />
+      <button onclick="concatenarPalabras()">Concatenar</button>
+      <p id="r5"></p>
+    </section>
+
+    <section>
+      <h2>6. Cubo de Números</h2>
+      <input type="text" id="numsCubos" placeholder="Ej: 2,3,4" />
+      <button onclick="cubosArreglo()">Calcular</button>
+      <p id="r6"></p>
+    </section>
+
+    <section>
+      <h2>7. Tabla de cada número</h2>
+      <input type="text" id="numsTabla" placeholder="Ej: 3,5" />
+      <button onclick="tablaArreglo()">Mostrar</button>
+      <p id="r7"></p>
+    </section>
+
+    <section>
+      <h2>8. Factorial por elemento</h2>
+      <input type="text" id="numsFact" placeholder="Ej: 4,5" />
+      <button onclick="factorialArreglo()">Calcular</button>
+      <p id="r8"></p>
+    </section>
+
+    <section>
+      <h2>9. Copiar solo pares</h2>
+      <input type="text" id="numsPares" placeholder="Ej: 1,2,3,4" />
+      <button onclick="paresEnNuevo()">Copiar</button>
+      <p id="r9"></p>
+    </section>
+
+    <section>
+      <h2>10. Sumar arreglos</h2>
+      <input type="text" id="arr1" placeholder="Ej: 1,2,3" />
+      <input type="text" id="arr2" placeholder="Ej: 4,5,6" />
+      <button onclick="sumarArreglos()">Sumar</button>
+      <p id="r10"></p>
+    </section>
+  </main>
+  <script src="./JS/arreglos.js"></script>
+</body>
+</html>

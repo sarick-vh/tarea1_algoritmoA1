@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Cadenas</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Ejercicios de Cadenas</h1>
+        <p>Practica manipulación de strings</p>
+    </header>
+
+     <nav>
+        <a href="/index.html">Inicio</a>
+        <a href="/menu.html">Menú</a>
+        <a href="../pages/ciclos.html">Condicionales</a>
+        <a href="../pages/cadena.html">Cadenas</a>
+        <a href="../pages/arreglos.html">Arreglos</a>
+    </nav>
+
+    <main>
+        <!-- Ejercicio 1 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 1: Contar letras</h3>
+                <p>Ingresa una palabra y te diremos cuántas letras tiene</p>
+                <input type="text" id="palabra1" placeholder="Ingresa una palabra">
+                <button onclick="ejercicio1()">Contar letras</button>
+                <div id="resultado1" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 2: Contar letra "a"</h3>
+                <p>Ingresa un texto y contaremos cuántas veces aparece la letra "a"</p>
+                <input type="text" id="texto2" placeholder="Ingresa un texto">
+                <button onclick="ejercicio2()">Contar "a"</button>
+                <div id="resultado2" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 3: Invertir cadena</h3>
+                <p>Ingresa una palabra o frase y la invertiremos</p>
+                <input type="text" id="cadena3" placeholder="Ingresa texto a invertir">
+                <button onclick="ejercicio3()">Invertir</button>
+                <div id="resultado3" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 4 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 4: Comparar longitud</h3>
+                <p>Ingresa dos textos y te diremos cuál tiene más letras</p>
+                <input type="text" id="texto1_4" placeholder="Primer texto">
+                <input type="text" id="texto2_4" placeholder="Segundo texto">
+                <button onclick="ejercicio4()">Comparar</button>
+                <div id="resultado4" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 5 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 5: Mostrar iniciales</h3>
+                <p>Ingresa tu nombre completo y mostraremos solo las iniciales</p>
+                <input type="text" id="nombre5" placeholder="Ej: Juan Carlos Pérez">
+                <button onclick="ejercicio5()">Obtener iniciales</button>
+                <div id="resultado5" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 6 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 6: Reemplazar "a" por "@"</h3>
+                <p>Ingresa un texto y reemplazaremos todas las "a" por "@"</p>
+                <input type="text" id="texto6" placeholder="Ingresa un texto">
+                <button onclick="ejercicio6()">Reemplazar</button>
+                <div id="resultado6" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 7 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 7: Verificar palíndromo</h3>
+                <p>Ingresa una palabra y verificaremos si es un palíndromo</p>
+                <input type="text" id="palabra7" placeholder="Ej: oso, radar, etc.">
+                <button onclick="ejercicio7()">Verificar</button>
+                <div id="resultado7" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 8 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 8: Comparar cantidad de caracteres</h3>
+                <p>Ingresa dos frases y te diremos cuál tiene más caracteres</p>
+                <input type="text" id="frase1_8" placeholder="Primera frase">
+                <input type="text" id="frase2_8" placeholder="Segunda frase">
+                <button onclick="ejercicio8()">Comparar caracteres</button>
+                <div id="resultado8" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 9 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 9: Contar letra específica</h3>
+                <p>Ingresa un texto y una letra para contar cuántas veces aparece</p>
+                <input type="text" id="texto9" placeholder="Ingresa un texto">
+                <input type="text" id="letra9" placeholder="Letra a buscar" maxlength="1">
+                <button onclick="ejercicio9()">Contar letra</button>
+                <div id="resultado9" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 10 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 10: Dividir oración en palabras</h3>
+                <p>Ingresa una oración y mostraremos cada palabra por separado</p>
+                <input type="text" id="oracion10" placeholder="Ingresa una oración">
+                <button onclick="ejercicio10()">Dividir palabras</button>
+                <div id="resultado10" class="result"></div>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="/menu.html" class="btn-primary">Volver al Menú</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ejercicios de Lógica de Programación</p>
+    </footer>
+
+    <script src="../JS/cadena.js"></script>
+</body>
+</html>

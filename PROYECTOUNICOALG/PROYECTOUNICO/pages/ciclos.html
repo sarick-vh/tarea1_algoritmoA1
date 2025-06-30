@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Ciclos</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Ejercicios de Ciclos</h1>
+        <p>Practica bucles for y while</p>
+    </header>
+
+    <nav>
+        <a href="/index.html">Inicio</a>
+        <a href="/menu.html">Menú</a>
+        <a href="../pages/ciclos.html">Condicionales</a>
+        <a href="../pages/cadena.html">Cadenas</a>
+        <a href="../pages/arreglos.html">Arreglos</a>
+    </nav>
+
+    <main>
+        <!-- Ejercicio 1 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 1: Números del 1 al 10</h3>
+                <p>Mostrar los números del 1 al 10 usando for</p>
+                <button onclick="ejercicio1()">Mostrar números</button>
+                <div id="resultado1" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 2: Tabla de multiplicar</h3>
+                <p>Ingresa un número y mostraremos su tabla de multiplicar del 1 al 10</p>
+                <input type="number" id="numero2" placeholder="Ingresa un número">
+                <button onclick="ejercicio2()">Generar tabla</button>
+                <div id="resultado2" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 3: Suma de números naturales</h3>
+                <p>Ingresa un número N y calcularemos la suma de los primeros N números naturales</p>
+                <input type="number" id="numero3" placeholder="Ingresa N" min="1">
+                <button onclick="ejercicio3()">Calcular suma</button>
+                <div id="resultado3" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 4 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 4: Factorial de un número</h3>
+                <p>Ingresa un número y calcularemos su factorial</p>
+                <input type="number" id="numero4" placeholder="Ingresa un número" min="0">
+                <button onclick="ejercicio4()">Calcular factorial</button>
+                <div id="resultado4" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 5 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 5: Números pares del 1 al 50</h3>
+                <p>Mostrar todos los números pares del 1 al 50</p>
+                <button onclick="ejercicio5()">Mostrar pares</button>
+                <div id="resultado5" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 6 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 6: Divisores de un número</h3>
+                <p>Ingresa un número y mostraremos sus divisores usando while</p>
+                <input type="number" id="numero6" placeholder="Ingresa un número" min="1">
+                <button onclick="ejercicio6()">Encontrar divisores</button>
+                <div id="resultado6" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 7 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 7: Secuencia de Fibonacci</h3>
+                <p>Ingresa N y generaremos los primeros N términos de Fibonacci</p>
+                <input type="number" id="numero7" placeholder="Cantidad de términos" min="1">
+                <button onclick="ejercicio7()">Generar Fibonacci</button>
+                <div id="resultado7" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 8 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 8: Contador de nombres</h3>
+                <p>Ingresa nombres hasta escribir "Messi" para terminar</p>
+                <input type="text" id="nombre8" placeholder="Ingresa un nombre">
+                <button onclick="ejercicio8()">Agregar nombre</button>
+                <button onclick="reiniciarEjercicio8()">Reiniciar</button>
+                <div id="resultado8" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 9 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 9: Suma hasta número negativo</h3>
+                <p>Ingresa números positivos, cuando ingreses un negativo mostraremos la suma total</p>
+                <input type="number" id="numero9" placeholder="Ingresa un número">
+                <button onclick="ejercicio9()">Agregar número</button>
+                <button onclick="reiniciarEjercicio9()">Reiniciar</button>
+                <div id="resultado9" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 10 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 10: Contador hasta cero</h3>
+                <p>Ingresa números hasta escribir 0 para terminar y contar cuántos ingresaste</p>
+                <input type="number" id="numero10" placeholder="Ingresa un número">
+                <button onclick="ejercicio10()">Agregar número</button>
+                <button onclick="reiniciarEjercicio10()">Reiniciar</button>
+                <div id="resultado10" class="result"></div>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="/menu.html" class="btn-primary">Volver al Menú</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ejercicios de Lógica de Programación</p>
+    </footer>
+
+    <script src="../JS/ciclos.js"></script>
+</body>
+</html>

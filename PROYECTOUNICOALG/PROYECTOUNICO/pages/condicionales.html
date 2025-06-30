@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Condicionales</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Ejercicios de Condicionales</h1>
+        <p>Practica estructuras if-else</p>
+    </header>
+
+    <nav>
+        <a href="/index.html">Inicio</a>
+        <a href="/menu.html">Menú</a>
+        <a href="../pages/ciclos.html">Condicionales</a>
+        <a href="../pages/cadena.html">Cadenas</a>
+        <a href="../pages/arreglos.html">Arreglos</a>
+    </nav>
+    <main>
+        <!-- Ejercicio 1 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 1: Clasificar por edad</h3>
+                <p>Ingresa una edad y te diremos si es niño (0-12), adolescente (13-17), adulto (18-59) o adulto mayor (60+)</p>
+                <input type="number" id="edad1" placeholder="Ingresa la edad">
+                <button onclick="ejercicio1()">Clasificar</button>
+                <div id="resultado1" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 2: Comparar cuatro números</h3>
+                <p>Ingresa cuatro números y te diremos cuál es mayor</p>
+                <input type="number" id="num1_2" placeholder="Número 1">
+                <input type="number" id="num2_2" placeholder="Número 2">
+                <input type="number" id="num3_2" placeholder="Número 3">
+                <input type="number" id="num4_2" placeholder="Número 4">
+                <button onclick="ejercicio2()">Comparar</button>
+                <div id="resultado2" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 3: Evaluar nota</h3>
+                <p>Ingresa una nota y te diremos si está aprobado (>=7), supletorio (>=5) o reprobado</p>
+                <input type="number" id="nota3" placeholder="Ingresa la nota" step="0.1">
+                <button onclick="ejercicio3()">Evaluar</button>
+                <div id="resultado3" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 4 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 4: Día de la semana</h3>
+                <p>Ingresa un día de la semana y te diremos si es fin de semana o entre semana</p>
+                <input type="text" id="dia4" placeholder="Ej: lunes, martes, etc.">
+                <button onclick="ejercicio4()">Verificar</button>
+                <div id="resultado4" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 5 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 5: Clasificar temperatura</h3>
+                <p>Ingresa una temperatura y te diremos si hace frío (<15), templado (15-25) o calor (>25)</p>
+                <input type="number" id="temp5" placeholder="Temperatura en °C">
+                <button onclick="ejercicio5()">Clasificar</button>
+                <div id="resultado5" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 6 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 6: Saludo personalizado</h3>
+                <p>Ingresa tu nombre y género para un saludo personalizado</p>
+                <input type="text" id="nombre6" placeholder="Tu nombre">
+                <select id="genero6">
+                    <option value="">Selecciona género</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                </select>
+                <button onclick="ejercicio6()">Saludar</button>
+                <div id="resultado6" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 7 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 7: Saludo según la hora</h3>
+                <p>Ingresa la hora (0-23) y te daremos el saludo apropiado</p>
+                <input type="number" id="hora7" placeholder="Hora (0-23)" min="0" max="23">
+                <button onclick="ejercicio7()">Saludar</button>
+                <div id="resultado7" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 8 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 8: Calcular bono familiar</h3>
+                <p>Ingresa el número de hijos y si tienes trabajo para calcular tu bono</p>
+                <input type="number" id="hijos8" placeholder="Número de hijos" min="0">
+                <select id="trabajo8">
+                    <option value="">¿Tienes trabajo?</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+                <button onclick="ejercicio8()">Calcular bono</button>
+                <div id="resultado8" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 9 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 9: Descuento por tipo de cliente</h3>
+                <p>Ingresa tu tipo de cliente y gasto para calcular descuento e IVA</p>
+                <select id="cliente9">
+                    <option value="">Tipo de cliente</option>
+                    <option value="normal">Normal</option>
+                    <option value="vip">VIP</option>
+                </select>
+                <input type="number" id="gasto9" placeholder="Gasto en $" step="0.01">
+                <button onclick="ejercicio9()">Calcular</button>
+                <div id="resultado9" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Ejercicio 10 -->
+        <div class="exercise-container">
+            <div class="exercise">
+                <h3>Ejercicio 10: Descuento por membresía</h3>
+                <p>Ingresa si tienes membresía y el monto de compra para calcular descuento e IVA</p>
+                <select id="membresia10">
+                    <option value="">¿Tienes membresía?</option>
+                    <option value="si">Sí</option>
+                    <option value="no">No</option>
+                </select>
+                <input type="number" id="compra10" placeholder="Monto de compra en $" step="0.01">
+                <button onclick="ejercicio10()">Calcular</button>
+                <div id="resultado10" class="result"></div>
+            </div>
+        </div>
+
+        <div class="back-link">
+            <a href="/menu.html" class="btn-primary">Volver al Menú</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Ejercicios de Lógica de Programación</p>
+    </footer>
+
+    <script src="../JS/condicioales.js"></script>
+</body>
+</html>
